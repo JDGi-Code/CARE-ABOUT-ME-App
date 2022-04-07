@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %}
+{% block title %}Thrive M.E. Inventory App{% endblock %}
+{% block page_title %}Care About M.E. Menstrual Equity Ticket Form{% endblock page_title %}
+{% block page_body %}
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show {% if message.tags %} {{ message.tags }}{% endif %}" role="alert">
+            <strong>Success!</strong> {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+<form action="/tickets" method="post">{% csrf_token %}
+    <div class="container-md">
+        <p><i>You are logged in as {{ username }}</i></p>
+        <p>Use this form to request restock or maintenance at a menstrual equity station.</p>
+    </div>
+    <div class="container-md">
+        <div class="">
+            <label for="station_id">Station: </label>
+            <select class="form-select" name="station_id" aria-label="Default select example" required>
+                <option selected> </option>
+                {% for station in stations %}
+                	<option value="{{ station.id }}">
+		                {{ station.name }} : {{ station.location }}
+	                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="">
+            <label for="product_id">Product: </label>
+            <select class="form-select" name="product_id" aria-label="Default select example" required>
+                <option selected> </option>
+                {% for product in products %}
+                	<option value="{{ product.id }}">
+		                {{ product.name }} ({{ product.brand }})
+	                </option>
+                {% endfor %}
+            </select>
+            <label for="quantity">Quantity: </label>
+            <input type="number" name="quantity" id="quantity" placeholder="" required>
+        </div>
+
+        <div class="mb-3">
+            <p>Special remarks/comments box:</p>
+            <textarea name="message" rows="5" cols="50">
+            </textarea>
+        </div>
+<!--
+        <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Attach photos of the stations where you are making requests: </label><br>
+            <input class="form-control" type="file" id="formFileMultiple" multiple>
+        </div>
+--!>
+    </div>
+    <div class="container-md">
+        <input type="submit" value="Submit"> <input type="reset" value="Cancel">
+    </div>
+</form>
+{% endblock page_body %}

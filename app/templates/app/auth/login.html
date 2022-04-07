@@ -1,0 +1,21 @@
+{% extends 'app/base.html' %}
+{% block title %}Thrive M.E. Inventory App{% endblock %}
+{% block page_title %}Thrive M.E. Inventory App{% endblock page_title %}
+{% block page_body %}
+    <div class="mb-3">
+    <div id="loginHelp" class="form-text">Log in here. For help, contact Thrive Admin.</div>
+    </div>
+
+    <form method="post" action="/login">{% csrf_token %}
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+
+            <input type="submit" id="submit" name=submit">
+        </div>
+    </form>
+{% endblock page_body %}
