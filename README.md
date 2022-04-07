@@ -25,19 +25,32 @@ Dependencies are installed during [installation](#installation).
 
 ## Installation
 
-TODO 
+```
+git clone https://github.com/JDGi-Code/CARE-ABOUT-ME-App.git
+cd ./CARE-ABOUT-ME-App/
+pip install django
+pip install sqlite
+```
 
 ## Configuration
 
-TODO
+Change views in app/templates folder to customize layout.
 
 ## Usage
 
-TODO
+```
+python manage.py runserver 8000
+```
+Users log in to submit tickets. 
+Admin page exists at localhost:8000/admin.
 
 ## How to test the software
 
-TODO
+```
+pip install seleniumbase
+pip install pytest-django
+```
+Next run pytest on one of the test files (ie, in repositories folder).
 
 ## Known issues
 
