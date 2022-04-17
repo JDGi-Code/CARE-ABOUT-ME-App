@@ -4,7 +4,7 @@
 
   - **Technology stack**: Django
   - **Status**:  Not maintained. 
-  - **Platform Proposal Documents**: [Google Docs](https://drive.google.com/drive/folders/1JmWr6jCjmkuTKWWYdKnzseHvxjTa0v-e?usp=sharing). 
+  - **Platform Proposal Documents and App Handbook**: [Google Docs](https://drive.google.com/drive/folders/1JmWr6jCjmkuTKWWYdKnzseHvxjTa0v-e?usp=sharing). 
   - **Video**: [YouTube](https://youtu.be/Q2b08zN9JE4)
 
 ## Dependencies
