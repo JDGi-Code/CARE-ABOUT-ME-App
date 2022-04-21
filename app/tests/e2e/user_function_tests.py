@@ -9,10 +9,10 @@ class UserFunctionTest(LiveServerTestCase, BaseCase):
     # setup for test
     def setUp(self):
         super().setUp()
-        cookie = create_session_cookie(username='superadmin', password='superadminpassword')
+        cookie = create_session_cookie(username='superadmin', password='superadmin')
         self.open('http://127.0.0.1:8000/')
         self.type("input#username", "superadmin")
-        self.type("input#password", "superadminpassword")
+        self.type("input#password", "superadmin")
         self.click("input[type=submit]")
         self.wait_for_element("#station_id")
 
@@ -27,8 +27,10 @@ class UserFunctionTest(LiveServerTestCase, BaseCase):
     def test_form_submit(self):
         url = 'http://127.0.0.1:8000/'
         self.open(url)
-        self.type("input#station_id", "1")
-        self.type("input#product_id", "3")
+        self.type("#station_id", "1")
+        self.type("#product_id", "3")
         self.type("input#quantity", "5")
+        self.type("textarea#note", "mock note")
+        self.is_text_visible("mock note", "body")
         self.click("input[type=submit]")
         self.is_text_visible("Ticket(date=datetime.date(", "body")

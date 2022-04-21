@@ -22,7 +22,7 @@
     <div class="container-md">
         <div class="">
             <label for="station_id">Station: </label>
-            <select class="form-select" name="station_id" aria-label="Default select example" required>
+            <select class="form-select" name="station_id" id="station_id" aria-label="Default select example" required>
                 <option selected> </option>
                 {% for station in stations %}
                 	<option value="{{ station.id }}">
@@ -34,7 +34,7 @@
 
         <div class="">
             <label for="product_id">Product: </label>
-            <select class="form-select" name="product_id" aria-label="Default select example" required>
+            <select class="form-select" name="product_id" id="product_id" aria-label="Default select example" required>
                 <option selected> </option>
                 {% for product in products %}
                 	<option value="{{ product.id }}">
@@ -47,9 +47,8 @@
         </div>
 
         <div class="mb-3">
-            <p>Special remarks/comments box:</p>
-            <textarea name="message" rows="5" cols="50">
-            </textarea>
+            <p><label for="note">Special remarks/comments box:</label></p>
+            <textarea name="note" id="note" rows="5" cols="50"></textarea>
         </div>
 <!--
         <div class="mb-3">
