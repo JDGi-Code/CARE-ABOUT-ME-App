@@ -24,6 +24,7 @@ class TicketRepository():
         r.date = request.date
         r.quantity = request.quantity
         r.fulfilled = request.fulfilled
+        r.note = request.note
         # give station_id to to station create_or_update method
         r.station_id = StationRepository.create_or_update(request.station).id
         r.product_id = ProductRepository.create_or_update(request.product).id

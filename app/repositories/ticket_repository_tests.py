@@ -30,6 +30,23 @@ def test_get_by_id():
     assert rq.product_id == result.product.id
 
 
+# Verify that get_by_id returns the correct object matching the id, in the correct format
+@pytest.mark.django_db
+def test_note_retrieval():
+    # 1. Setup
+    s = Station(name='Mock1', location='Mock1Loc')
+    s.save()
+    p = Product(name='Mock1', description='Mock1Desc', brand='Mock1Brand')
+    p.save()
+    n = "mock note"
+    rq = Ticket(date=date.today(), quantity=1, fulfilled=False, station_id=s.id, product_id=p.id, note=n)
+    rq.save()
+    # 2. Execute
+    result = TicketRepository.get_by_id(id=rq.id)
+    # 3. Assert
+    assert rq.note == n
+
+
 # Verify all requests were retrieved
 @pytest.mark.django_db
 def test_get_all():
@@ -66,6 +83,20 @@ def test_create():
     # 3. Assert
     assert new_request.id is not None
     assert new_request.date == dto.date
+
+
+# Verify objects are created
+@pytest.mark.django_db
+def test_create_with_note():
+    # 1. Setup
+    s = StationDTO(name='Mock1', location='Mock1Loc')
+    p = ProductDTO(name='Mock1', description='Mock1Desc', brand='Mock1Brand')
+    n = "mock note"
+    dto = TicketDTO(date=date.today(), quantity=1, fulfilled=False, station=s, product=p, note=n)
+    # 2. Execute
+    new_request = TicketRepository.create_or_update(dto)
+    # 3. Assert
+    assert new_request.note == n
 
 
 # Verify objects are updated
