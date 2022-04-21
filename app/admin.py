@@ -20,5 +20,5 @@ class StationAdmin(admin.ModelAdmin):
 
 @admin.register(Ticket)
 class TicketAdmin(admin.ModelAdmin):
-    fields = ['station', 'product', 'quantity', 'fulfilled', 'out_of_stock']
-    list_display = ('date', 'station', 'fulfilled', 'out_of_stock')
+    fields = ['station', 'product', 'quantity', 'fulfilled', 'out_of_stock', 'note']
+    list_display = ('date', 'station', 'fulfilled', 'out_of_stock', 'note')
