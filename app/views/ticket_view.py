@@ -20,7 +20,7 @@ class TicketView(View):
     def post(self, request):
         # pull out product station and quantity in submission
         # store the data as a request object
-        new_submission = TicketFormSubmission(station_id=request.POST['station_id'], product_id=request.POST['product_id'], quantity=request.POST['quantity'])
+        new_submission = TicketFormSubmission(station_id=request.POST['station_id'], product_id=request.POST['product_id'], quantity=request.POST['quantity'], note=request.POST['note'])
         # give submission to service to create it
         RequestService.create_request_from_submission(new_submission)
         # flash success message
