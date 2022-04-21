@@ -24,6 +24,22 @@ def test_create_request_from_submission():
     assert dto.id is not None
 
 
+@pytest.mark.django_db
+def test_create_request_from_submission():
+    # 1. Setup - create fake station and product in db
+    s = StationDTO(name='Mock1', location='Mock1Loc')
+    s = StationRepository.create_or_update(s)
+    p = ProductDTO(name='Mock1', description='Mock1Desc', brand='Mock1Brand')
+    p = ProductRepository.create_or_update(p)
+    n = "mock note"
+    # make a fake submission
+    submission = RequestFormSubmissionDTO(station_id=s.id, product_id=p.id, quantity=5, note=n)
+    # 2. Execute - call service method
+    dto = RequestService.create_request_from_submission(submission)
+    # 3. Assert - verify req was created, associated w correct station and product
+    assert dto.note == n
+
+
 # call a service method and get back a list of dtos
 @pytest.mark.django_db
 def test_get_all_products_and_stations():
