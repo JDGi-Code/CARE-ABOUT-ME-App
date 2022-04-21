@@ -103,9 +103,11 @@ class Ticket(models.Model):
     quantity = models.IntegerField(validators=(MinValueValidator(1),))
     fulfilled = models.BooleanField(default=False)
     out_of_stock = models.BooleanField(default=False)
+    # 'note' refers to the text block, optional for comments from user
+    note = models.CharField(default="", max_length=2000)
 
     def __str__(self):
         return "" + str(self.date) + " - " + self.station.name
 
     def to_dto(self):
-        return TicketDTO(id=self.id, date=self.date, quantity=self.quantity, fulfilled=self.fulfilled, station=self.station.to_dto(), product=self.product.to_dto(), out_of_stock=self.out_of_stock)
+        return TicketDTO(id=self.id, date=self.date, quantity=self.quantity, fulfilled=self.fulfilled, station=self.station.to_dto(), product=self.product.to_dto(), out_of_stock=self.out_of_stock, note=self.note)

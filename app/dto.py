@@ -28,6 +28,7 @@ class Ticket():
     id: Optional[int] = None
     fulfilled: Optional[bool] = False
     out_of_stock: Optional[bool] = False
+    note: Optional[str] = ""
 
 
 @dataclass
@@ -35,3 +36,4 @@ class TicketFormSubmission():
     station_id: int
     product_id: int
     quantity: int
+    note: str
