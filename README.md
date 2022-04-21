@@ -1,22 +1,10 @@
-#### CFPB Open Source Project Template Instructions
-
-3. Update the README, replacing the contents below as prescribed.
-4. Add any libraries, assets, or hard dependencies whose source code will be included
-   in the project's repository to the _Exceptions_ section in the [TERMS](TERMS.md).
-  - If no exceptions are needed, remove that section from TERMS.
-5. If working with an existing code base, answer the questions on the [open source checklist](opensource-checklist.md)
-6. Delete these instructions and everything up to the _Project Title_ from the README.
-7. Write some great software and tell people about it.
-
-
-----
-
 # CARE ABOUT M.E. 
 
 **Description**:  Menstrual Equity and Basic Needs Pantry inventory application for use by higher education institutions.
 
   - **Technology stack**: Django
   - **Status**:  Not maintained. 
+  - **Platform Proposal Documents and App Handbook**: [Google Docs](https://drive.google.com/drive/folders/1JmWr6jCjmkuTKWWYdKnzseHvxjTa0v-e?usp=sharing). 
   - **Video**: [YouTube](https://youtu.be/Q2b08zN9JE4)
 
 ## Dependencies
